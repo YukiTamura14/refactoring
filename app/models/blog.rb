@@ -12,9 +12,23 @@ class Blog < ApplicationRecord
   #共通化
   include CommonModule
   # include ActiveModel::Validations
-  validates_with BlogValidator
+  # validates_with BlogValidator
   # test_puts
+  before_create BlogCallbacks.new
+  #callbackの切り出し
+  # before_create :default_title
+  # before_create :default_content
   #
+  # private
+  #
+  # def default_title
+  #   self.title = 'タイトルなし' if self.title.blank?
+  # end
+  #
+  # def default_content
+  #   self.content = '内容なし' if self.content.blank?
+  # end
+
   # validate :title_more_write
   # validate :content_more_write
   #

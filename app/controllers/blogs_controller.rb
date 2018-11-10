@@ -13,6 +13,7 @@ class BlogsController < ApplicationController
     @blog = Blog.create(blog_params)
     if @blog.save
        # @blog.title_change
+       ContentCleanupService.new(@blog).call
        redirect_to blogs_path, notice: "ブログを作成しました！"
     else
       render :new
@@ -27,6 +28,7 @@ class BlogsController < ApplicationController
 
   def update
     if @blog.save
+      ContentCleanupService.new(@blog).call
       redirect_to blogs_path, notice: "ブログを編集しました！"
     else
       render :edit
