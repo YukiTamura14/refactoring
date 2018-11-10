@@ -1,5 +1,8 @@
 <h1>ブログ一覧</h1>
 <p><%= notice %></p>
+<h1>Blogs</h1>
+<%= day_of_the_week_character_helper %>
+<%= render 'latest_infomation', article_number: @blogs.count %>
 <table>
   <tr>
     <th>タイトル</th>
